@@ -10,6 +10,9 @@
     <% end %>
     <label class="amount">
       <span>Amount: $5.00</span>
+      <%= hidden_field_tag 'stripeToken' %>
+      <%= hidden_field_tag 'stripeEmail' %>
+      <%= hidden_field_tag 'amount', 500 %>
     </label>
   </article>
 
