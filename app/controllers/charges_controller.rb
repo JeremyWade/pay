@@ -1,31 +1,32 @@
 class ChargesController < ApplicationController
-	def new
-end
 
 def create
-  @amount = 500
 
-  customer = Stripe::Customer.create(
+    customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
-    :source  => params[:stripeToken]
   )
 
+# Token is created using Checkout or Elements!
+# Get the payment token ID submitted by the form:
+token = params[:stripeToken]
+
+# Charge the user's card:
   charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => params[:amount],
-    :description => 'monthly description',
-    :currency    => 'usd'
-  )
+  :amount => params[:amount],
+  :currency => "usd",
+  :description => "Example charge",
+  :metadata => {"order_id" => 6735},
+  :source => token,
+)
 
-  purchase = Purchase.create(email: params[:stripeEmail], 
-  card: params[:stripeToken], amount: params[:amount], 
-  description: charge.description, currency: charge.currency,
-  customer_id: customer.id, product_id: 1)
+  purchase = Purchase.create(email: params[:stripeEmail], card: params[:stripeToken], 
+    amount: params[:amount], description: charge.description, currency: charge.currency,
+    customer_id: customer.id, product_id: 1)
 
-redirect_to purchase 
+  redirect_to purchase
 
-rescue Stripe::CardError => e
+   rescue Stripe::CardError => e
   flash[:error] = e.message
-  redirect_to new_charge_path
-end
-end
+  redirect_to charges_path
+   end
+end 
