@@ -8,7 +8,7 @@ def create
 
 # Token is created using Checkout or Elements!
 # Get the payment token ID submitted by the form:
-token = params[:stripeToken]
+  token = params[:stripeToken]
 
 # Charge the user's card:
   charge = Stripe::Charge.create(
@@ -19,9 +19,16 @@ token = params[:stripeToken]
   :source => token,
 )
 
-  purchase = Purchase.create(email: params[:stripeEmail], card: params[:stripeToken], 
-    amount: params[:amount], description: charge.description, currency: charge.currency,
-    customer_id: customer.id, product_id: 1)
+  purchase = Purchase.create(
+    email: params[:stripeEmail], 
+    card: params[:stripeToken], 
+    amount: params[:amount], 
+    description: charge.description, 
+    currency: charge.currency,
+    customer_id: customer.id, 
+    product_id: 1,
+    uuid: SecureRandom.uuid
+)
 
   redirect_to purchase
 
