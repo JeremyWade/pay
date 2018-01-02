@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'stripe', '~> 1.57', '>= 1.57.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'activeadmin', '~> 1.2'
+gem 'devise', '~> 4.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
