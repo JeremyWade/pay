@@ -34,6 +34,9 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+  # Send emails using letter opener in dev mode to open emails in a browser
+  config.action_mailer.delivery_method = :letter_opener
+
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
