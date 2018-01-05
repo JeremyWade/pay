@@ -36,6 +36,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'activeadmin', '~> 1.2'
 gem 'devise', '~> 4.2'
 gem 'letter_opener', group: :development
+gem 'sendgrid-ruby'
 
 
 # Use Capistrano for deployment
