@@ -38,6 +38,9 @@ gem 'devise', '~> 4.2'
 gem 'letter_opener', group: :development
 gem 'sendgrid-ruby'
 
+# Add 12 factor for Heroku
+gem 'rails_12factor', group: :production
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
