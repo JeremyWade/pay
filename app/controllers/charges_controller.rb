@@ -12,7 +12,7 @@ def create
 
 # Charge the user's card:
   charge = Stripe::Charge.create(
-  :amount => params[:amount],
+  :amount => product.price_in_cents,
   :currency => "usd",
   :description => "Example charge",
   :metadata => {"order_id" => 6735},
@@ -22,7 +22,7 @@ def create
   purchase = Purchase.create(
     email: params[:stripeEmail], 
     card: params[:stripeToken], 
-    amount: params[:amount], 
+    amount: product.price_in_cents, 
     description: charge.description, 
     currency: charge.currency,
     customer_id: customer.id, 
