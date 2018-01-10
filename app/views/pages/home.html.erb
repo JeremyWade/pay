@@ -9,7 +9,7 @@
 <%= form_tag charges_path do %>
  <article>
    <label class="amount">
-     <span>Amount: <%= @product.price %></span>
+     <span>Amount: <%= @product.price%></span>
    </label>
 </article>
 
@@ -19,7 +19,7 @@
    data-amount=<%= @product.price%>></script>
     <%= hidden_field_tag 'stripeToken' %>
     <%= hidden_field_tag 'stripeEmail' %>  
-    <%= hidden_field_tag 'amount', @product.price %>
+
     <script>
     var handler = StripeCheckout.configure({
       key: '<%= Rails.configuration.stripe[:publishable_key] %>',

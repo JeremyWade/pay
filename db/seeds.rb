@@ -11,3 +11,7 @@ AdminUser.create!(email: 'admin1@example.com', password: 'password1', password_c
 brand_guide = Product.create(title: "Brand Guide", 
 	subtitle: "Level 2", description: %{<p>343433434fdf</p>},
 	price: "99", sku: "Brand1")
+
+monthly_brand_toolkit = Product.create(title: "Monthly Brand Toolkit", 
+	subtitle: "Level 2", description: %{<p>343433434fdf</p>},
+	price: "99", sku: "BrandToolkit")

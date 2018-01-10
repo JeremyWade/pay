@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-	#def price
-		#(self.price * 100).to_i
+	#def price_in_cents
+		#(self.price * 10).to_i
 	#end
 end
